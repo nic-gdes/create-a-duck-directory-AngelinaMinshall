@@ -1,16 +1,14 @@
-  <<<<<<< HEAD
-=======
+
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-include 'head.php';
+<?php include ('./components/head.php');
 ?>
 
 <body>
 
 <?php
-include 'nav.php';
+include ('./components/nav.php');
 ?>
 
 
@@ -20,7 +18,7 @@ include 'nav.php';
 
     <div class="grid-container">
         <div class="duck-container">
-            <img class="duck-image" src="harteman.jpeg" alt="Duck 1 Image">
+            <img class="duck-image" src="./assets/harteman.jpeg" alt="Duck 1 Image">
             <h3>Harteman Duck</h3>
             <p>Favorite Foods:</p>
             <ul>
@@ -31,7 +29,7 @@ include 'nav.php';
         </div>
 
         <div class="duck-container">
-            <img class="duck-image" src="manderian.jpg" alt="Duck 2 Image">
+            <img class="duck-image" src="./assets/manderian.jpg" alt="Duck 2 Image">
             <h3>Manderian Duck</h3>
             <p>Favorite Foods:</p>
             <ul>
@@ -42,7 +40,7 @@ include 'nav.php';
         </div>
 
         <div class="duck-container">
-            <img class="duck-image" src="redhead.jpeg" alt="Duck 3 Image">
+            <img class="duck-image" src="./assets/redhead.jpeg" alt="Duck 3 Image">
             <h3>Red Head Duck</h3>
             <p>Favorite Foods:</p>
             <ul>
@@ -54,9 +52,9 @@ include 'nav.php';
     </div>
     
 <?php
-include 'footer.php';
+include ('./components/footer.php');
 ?>
    
 </body>
 </html>
->>>>>>> 2ab0c323a59dc071c64a81c78ae505af83a288c5
+

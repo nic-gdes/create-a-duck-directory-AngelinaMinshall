@@ -2,17 +2,17 @@
 <html lang="en">
 
 <?php
-include 'head.php';
+include ('./assets/head.php');
 ?>
 
 <body>
 
 <?php
-include 'nav.php';
+include ('./assets/nav.php');
 ?>
     <section>
         <div class="profile-container">
-            <img class="duck-image" src="duck_profile.jpg" alt="Duck Profile Picture">
+            <img class="duck-image" src="./assets/duck_profile.jpg" alt="Duck Profile Picture">
             <h2>Name: Quackington</h2>
             <p>Favorite Foods:</p>
             <ul>
@@ -25,7 +25,7 @@ include 'nav.php';
     </section>
 
 <?php
-include 'footer.php';
+include ('./assets/footer.php');
 ?>
    
 </body>
