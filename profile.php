@@ -2,13 +2,13 @@
 <html lang="en">
 
 <?php
-include ('./assets/head.php');
+include ('./components/head.php');
 ?>
 
 <body>
 
 <?php
-include ('./assets/nav.php');
+include ('./components/nav.php');
 ?>
     <section>
         <div class="profile-container">
@@ -25,7 +25,7 @@ include ('./assets/nav.php');
     </section>
 
 <?php
-include ('./assets/footer.php');
+include ('./components/footer.php');
 ?>
    
 </body>

@@ -72,3 +72,37 @@ nav a:hover {
     background-color: #2196F3; /* Blue background on hover */
     color: #fff; /* White text color on hover */
 }
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 200px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #2196F3; /* Blue background for the button */
+    color: #fff; /* White text color */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1565C0; /* Darker blue background on hover */
+}

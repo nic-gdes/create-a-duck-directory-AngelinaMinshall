@@ -2,13 +2,13 @@
 <html lang="en">
 
 <?php
-include 'head.php';
+include ('./components/head.php');
 ?>
 
 <body>
 
 <?php
-include 'nav.php';
+include ('./components/nav.php');
 ?>
 
 <?php
@@ -46,7 +46,7 @@ include 'nav.php';
     </form>
 
 <?php
-include 'footer.php';
+include ('./components/footer.php');
 ?>
    
 </body>

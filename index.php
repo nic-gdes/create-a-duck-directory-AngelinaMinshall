@@ -1,3 +1,15 @@
+<?php
+include('./config/db.php');
+
+$sql = "SELECT name,favorite_foods,img_src FROM ducks";
+
+$result = mysqli_query($conn, $sql);
+$ducks = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+mysqli_free_result($result);
+mysqli_close($conn);
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,18 +29,25 @@ include ('./components/nav.php');
     </section>
 
     <div class="grid-container">
+
+<?php foreach($ducks as $duck) : ?>
         <div class="duck-container">
-            <img class="duck-image" src="./assets/harteman.jpeg" alt="Duck 1 Image">
-            <h3>Harteman Duck</h3>
+            <img class="duck-image" src="<?php echo $duck["img_src"]; ?>" alt="Duck 1 Image">
+            <h3><?php echo $duck["name"];?></h3>
             <p>Favorite Foods:</p>
-            <ul>
-                <li>Bread</li>
-                <li>Seeds</li>
-                <li>Insects</li>
+            <?php 
+                $foods_list = explode(",", $duck["favorite_foods"]);
+                // print_r($foods_list);
+            ?>
+            <ul class="favorite-foods">
+         <?php foreach($foods_list as $food) : ?>
+            <li> <?php echo $food ?></li>
+            <?php endforeach ?>
             </ul>
         </div>
+<?php endforeach ?>
 
-        <div class="duck-container">
+        <!-- <div class="duck-container">
             <img class="duck-image" src="./assets/manderian.jpg" alt="Duck 2 Image">
             <h3>Manderian Duck</h3>
             <p>Favorite Foods:</p>
@@ -49,7 +68,7 @@ include ('./components/nav.php');
                 <li>Algae</li>
             </ul>
         </div>
-    </div>
+    </div> -->
     
 <?php
 include ('./components/footer.php');
