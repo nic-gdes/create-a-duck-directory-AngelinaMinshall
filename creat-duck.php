@@ -1,3 +1,46 @@
+<?php 
+    if(isset($_POST['submit'])){
+        $errors = array(
+            "name" => "",
+            "favorite_foods" => "",
+            "bio" => ""
+        );  
+    
+
+        $name = htmlspecialchars($_POST["duck_name"]);
+        $favorite_foods = htmlspecialchars($_POST["favorite_foods"]);
+        $bio = htmlspecialchars($_POST["biography"]);
+
+
+if(empty($name)) {
+    $errors['name'] = "A name is required";
+} else {
+    if(!preg_match('/^[a-z\s]+$/i', $name)) {
+        $errors["name"] = "The name has illegal characters";
+    }
+}
+
+if(empty($favorite_foods)) {
+    $errors['favorite_foods'] = " comma required";
+} else {
+    if(!preg_match('/^[a-z,\s]+$/i', $favorite_foods)) {
+        $errors["favorite_foods"] = "need comma";
+    }
+}
+
+if(empty($biography)) {
+    $errors['biography'] = "A bio is required";
+} 
+
+        // print_r($errors); 
+
+       if(!array_filter($errors))  {
+        header("Location: ./index.php");
+       } else {
+       }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,38 +54,24 @@ include ('./components/head.php');
 include ('./components/nav.php');
 ?>
 
-<?php
-    // PHP code to handle form submission
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        // Retrieve form data
-        $duckName = $_POST["duckName"] ?? "";
-        $favoriteFoods = $_POST["favoriteFoods"] ?? "";
-        $biography = $_POST["biography"] ?? "";
+<form action="./creat-duck.php" method="POST" enctype="multipart/form-data">
+        <label for="duck_name">Duck Name:</label>
 
-        // Display submitted data (for testing purposes)
-        echo "<div style='margin: 20px auto; max-width: 600px;'>";
-        echo "<h2>Submitted Duck Information</h2>";
-        echo "<p><strong>Duck Name:</strong> $duckName</p>";
-        echo "<p><strong>Favorite Foods:</strong> $favoriteFoods</p>";
-        echo "<p><strong>Biography:</strong> $biography</p>";
-        echo "</div>";
-    }
-    ?>
+        <?php if (isset($errors['name'])) { echo "<div class='error'>" . $errors["name"] . "</div>";
+        } ?>
 
-<form action="create-duck.php" method="POST" enctype="multipart/form-data">
-        <label for="duckName">Duck Name:</label>
-        <input type="text" id="duckName" name="duckName" required>
+        <input type="text" id="duck_name" name="duck_name" value="<?php if (isset($name)) {echo $name;} ?>" required>
 
-        <label for="favoriteFoods">Favorite Foods:</label>
-        <input type="text" id="favoriteFoods" name="favoriteFoods" required>
+        <label for="favorite_foods">Favorite Foods:</label>
+        <input type="text" id="favorite_foods" name="favorite_foods" value="<?php if (isset($favorite_foods)) {echo $favorite_foods;} ?>">
 
-        <label for="duckImage">Duck Image:</label>
-        <input type="file" id="duckImage" name="duckImage" accept="image/*" required>
+        <label for="duck_image">Duck Image:</label>
+        <input type="file" id="duck_image" name="duck_image" accept="image/*">
 
         <label for="biography">Biography:</label>
-        <textarea id="biography" name="biography" rows="4" required></textarea>
+        <textarea id="biography" name="biography" rows="4"> <?php if (isset($bio)) {echo $bio;} ?></textarea>
 
-        <button type="submit">Create Duck</button>
+        <button type="submit" value="submit" name = "submit">Create Duck</button>
     </form>
 
 <?php
