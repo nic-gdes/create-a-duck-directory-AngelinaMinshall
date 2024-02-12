@@ -1,5 +1,9 @@
 <?php 
+   
+
     if(isset($_POST['submit'])){
+       
+
         $errors = array(
             "name" => "",
             "favorite_foods" => "",
@@ -11,6 +15,7 @@
         $favorite_foods = htmlspecialchars($_POST["favorite_foods"]);
         $bio = htmlspecialchars($_POST["biography"]);
 
+        echo $name . $favorite_foods . $bio;
 
 if(empty($name)) {
     $errors['name'] = "A name is required";
@@ -28,17 +33,27 @@ if(empty($favorite_foods)) {
     }
 }
 
-if(empty($biography)) {
+if(empty($bio)) {
     $errors['biography'] = "A bio is required";
 } 
 
         // print_r($errors); 
 
        if(!array_filter($errors))  {
-        header("Location: ./index.php");
+        require('./config/db.php');
+
+        $sql = "INSERT INTO ducks (name, favorite_foods, bio) VALUES ('$name', '$favorite_foods', '$bio')";
+
+
+        mysqli_query($conn, $sql);
+
+        echo "Query is successful. Added: ". $name . " to database.";
+
+    //     header("Location: ./index.php");
        } else {
+            print_r($errors);
        }
-    }
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +69,7 @@ include ('./components/head.php');
 include ('./components/nav.php');
 ?>
 
-<form action="./creat-duck.php" method="POST" enctype="multipart/form-data">
+<form action="./creat-duck.php" method="POST" id="creat-duck" enctype="multipart/form-data">
         <label for="duck_name">Duck Name:</label>
 
         <?php if (isset($errors['name'])) { echo "<div class='error'>" . $errors["name"] . "</div>";
@@ -69,7 +84,7 @@ include ('./components/nav.php');
         <input type="file" id="duck_image" name="duck_image" accept="image/*">
 
         <label for="biography">Biography:</label>
-        <textarea id="biography" name="biography" rows="4"> <?php if (isset($bio)) {echo $bio;} ?></textarea>
+        <textarea id="biography" name="biography" rows="4"> <?php if (isset($biography)) {echo $biography;} ?></textarea>
 
         <button type="submit" value="submit" name = "submit">Create Duck</button>
     </form>
