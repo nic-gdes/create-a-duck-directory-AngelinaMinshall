@@ -49,7 +49,7 @@ if(empty($bio)) {
 
         echo "Query is successful. Added: ". $name . " to database.";
 
-    //     header("Location: ./index.php");
+        header("Location: ./index.php");
        } else {
             print_r($errors);
        }
