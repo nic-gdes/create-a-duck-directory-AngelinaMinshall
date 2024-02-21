@@ -54,13 +54,15 @@ li {
 /* NAV */
 
 nav {
+    display: flex;
+    align-content: center;
     margin-top: 20px;
 }
 
 nav a {
-    display: inline-block;
+    /* display: inline-block;
     padding: 10px 20px;
-    margin: 0 10px;
+    margin: 0 10px; */
     text-decoration: none;
     color: #2196F3; /* Blue color for links */
     border: 2px solid #2196F3; /* Blue border for links */
