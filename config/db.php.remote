@@ -1,0 +1,10 @@
+<?php
+$conn = mysqli_connect("127.0.0.1:3308", "2024aminshall", "aminshall421", "welearnd_gdes261_2024_aminshall");
+
+
+if(mysqli_connect_errno()) {
+    echo "Database error: " . mysqli_connect_errors();
+    exit();
+}
+
+?>
