@@ -7,7 +7,7 @@ $result = mysqli_query($conn, $sql);
 $ducks = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 mysqli_free_result($result);
-mysqli_close($conn);
+mysqli_close($conn);                                       
 
 ?>
 

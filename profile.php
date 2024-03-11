@@ -17,7 +17,7 @@ if(isset($_GET['id'])) {
 
 
     if(isset($duck["id"])) {
-        $duck_is_live = true;
+        $duck_is_live = true; 
     }
 
     $duck_is_live = true;
